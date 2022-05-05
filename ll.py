@@ -143,3 +143,26 @@ def kth_to_last(head, k):
         left = left.next
         right = right.next
     return left.data
+
+
+def rearrange_ll(head):
+    if not head: return []
+    left, right = head, head
+    while right.next and right.next.next:
+        left = left.next
+        right = right.next.next
+        
+    prev, curr = None, left.next
+    while curr:
+        nextt = curr.next
+        curr.next = prev
+        prev = curr
+        curr = nextt    
+    left.next = None
+        
+    head1, head2 = head, prev
+    while head2:
+        nextt = head1.next
+        head1.next = head2
+        head1 = head2
+        head2 = nextt
