@@ -154,15 +154,17 @@ def rearrange_ll(head):
         
     prev, curr = None, left.next
     while curr:
-        nextt = curr.next
+        next_node = curr.next
         curr.next = prev
         prev = curr
-        curr = nextt    
+        curr = next_node    
     left.next = None
         
     head1, head2 = head, prev
     while head2:
-        nextt = head1.next
+        next_node = head1.next
         head1.next = head2
         head1 = head2
-        head2 = nextt
+        head2 = next_node
+
+    
